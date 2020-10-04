@@ -7,6 +7,6 @@ import ru.ramozjikevic.mymap.ui.component.RootActivity
 @Module
 abstract class ActivityModule {
 
-    @ContributesAndroidInjector()
+    @ContributesAndroidInjector(modules = [FragmentModule::class])
     abstract fun contributeRootActivity() : RootActivity
 }

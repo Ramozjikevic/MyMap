@@ -1,4 +1,4 @@
-package ru.ramozjikevic.mymap.di.viewmodel
+package ru.ramozjikevic.mymap.di.module.viewmodel
 
 import androidx.lifecycle.ViewModel
 

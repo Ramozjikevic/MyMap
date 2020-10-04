@@ -12,7 +12,7 @@ abstract class BaseActivity: AppCompatActivity() {
     lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //AndroidInjection.inject(this)
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(layout)
         navController = findNavController(R.id.nav_host_fragment)
