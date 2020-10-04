@@ -1,4 +1,4 @@
-package ru.ramozjikevic.mymap.presentation.viewmodels.base
+package ru.ramozjikevic.mymap.ui.component.base.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 
