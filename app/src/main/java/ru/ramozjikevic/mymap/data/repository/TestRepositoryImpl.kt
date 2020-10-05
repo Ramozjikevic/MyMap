@@ -7,12 +7,6 @@ import javax.inject.Inject
 class TestRepositoryImpl @Inject constructor(
     private val testDao: TestDao
 ) : TestRepository {
-
     override fun loadTestData() = testDao.getTestByPage()
-    override fun saveTestData() = testDao.insertTest(
-        listOf(
-            TestEntity(1, "loaded"),
-            TestEntity(2, "loaded2")
-        )
-    )
+    override fun saveTestData(data: List<TestEntity>) = testDao.insertTest(data)
 }

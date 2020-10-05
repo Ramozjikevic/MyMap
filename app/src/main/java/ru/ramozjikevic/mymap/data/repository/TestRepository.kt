@@ -4,5 +4,5 @@ import ru.ramozjikevic.mymap.data.local.TestEntity
 
 interface TestRepository {
     fun loadTestData(): List<TestEntity>
-    fun saveTestData(): LongArray
+    fun saveTestData(data: List<TestEntity>): LongArray
 }

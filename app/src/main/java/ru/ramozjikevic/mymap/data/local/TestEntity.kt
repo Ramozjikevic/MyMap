@@ -9,5 +9,6 @@ import androidx.room.PrimaryKey
 data class TestEntity(
     @PrimaryKey
     val id: Long,
+    val title: String,
     val content: String
 )

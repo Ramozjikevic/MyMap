@@ -14,7 +14,5 @@ class RootViewModel @Inject constructor(
     }
 
     fun loadMoreTestData() {
-        testInteractor.loadNewData()
-        val testEntity = testInteractor.getTestData()
     }
 }
