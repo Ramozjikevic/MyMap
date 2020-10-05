@@ -14,7 +14,7 @@ class SecondViewModel @Inject constructor(
     }
 
     fun loadMoreTestData() {
-        val testEntity = testInteractor.getTestData()
-        Log.e("123123 SecondViewModel", testEntity.toString())
+        //val testEntity = testInteractor.getTestData()
+        //Log.e("123123 SecondViewModel", testEntity.toString())
     }
 }

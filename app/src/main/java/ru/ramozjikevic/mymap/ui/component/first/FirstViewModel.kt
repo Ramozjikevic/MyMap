@@ -14,7 +14,7 @@ class FirstViewModel @Inject constructor(
     }
 
     fun loadMoreTestData() {
-        val testEntity = testInteractor.getTestData()
-        Log.e("123123 FirstViewModel", testEntity.toString())
+        //val testEntity = testInteractor.getTestData()
+        //Log.e("123123 FirstViewModel", testEntity.toString())
     }
 }
