@@ -1,10 +1,10 @@
-package ru.ramozjikevic.mymap.di.rx
-/*
+package ru.ramozjikevic.mymap.di.module.rx
 
-import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.Scheduler
+
 
 interface SchedulersProvider {
     fun io(): Scheduler
     fun main(): Scheduler
     fun computation(): Scheduler
-}*/
+}

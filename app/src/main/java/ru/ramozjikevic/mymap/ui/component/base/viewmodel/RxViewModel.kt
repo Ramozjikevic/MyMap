@@ -1,8 +1,14 @@
 package ru.ramozjikevic.mymap.ui.component.base.viewmodel
 
-/*abstract class RxViewModel() : ViewModel() {
-    @Inject
-    lateinit var schedulers: SchedulersProvider
+import androidx.lifecycle.ViewModel
+import io.reactivex.*
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import ru.ramozjikevic.mymap.di.module.rx.SchedulersProvider
+
+abstract class RxViewModel : ViewModel() {
+
+    protected abstract val schedulers: SchedulersProvider
 
     private val disposes = CompositeDisposable()
 
@@ -15,56 +21,9 @@ package ru.ramozjikevic.mymap.ui.component.base.viewmodel
         onError: (Throwable) -> Unit = onErrorStub,
         onSubscribe: (Disposable) -> Unit = onSubscribeStub,
         subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main(),
-        unsubscribeOn: Scheduler = schedulers.io()
+        observeOn: Scheduler = schedulers.main()
     ) = subscribeOn(subscribeOn)
         .observeOn(observeOn)
-        .unsubscribeOn(unsubscribeOn)
-        .doOnSubscribe(onSubscribe)
-        .subscribe(onSuccess, onError)
-        .bind()
-
-  *//*  protected abstract val schedulers: SchedulersProvider
-
-    protected fun <T> Single<T>.bindSubscription(
-        onSuccess: (T) -> Unit,
-        onError: (Throwable) -> Unit = onErrorStub
-    ) = subscribe(onSuccess, onError).bind()
-
-    protected fun Completable.bindSubscription(
-        onComplete: () -> Unit = onCompleteStub,
-        onError: (Throwable) -> Unit = onErrorStub
-    ) = subscribe(onComplete, onError).bind()
-
-*//**//*    protected fun <T> Observable<T>.bindSubscription(
-        onNext: (T) -> Unit,
-        onComplete: () -> Unit = onCompleteStub,
-        onError: (Throwable) -> Unit = onErrorStub,
-        onSubscribe: (Disposable) -> Unit = onSubscribeStub
-    ) = subscribe(onNext, onError, onComplete, onSubscribe).bind()*//**//*
-
-    protected fun <T> Flowable<T>.bindSubscription(
-        onNext: (T) -> Unit,
-        onComplete: () -> Unit = onCompleteStub,
-        onError: (Throwable) -> Unit = onErrorStub
-    ) = subscribe(onNext, onError, onComplete).bind()
-
-    protected fun <T> Maybe<T>.bindSubscription(
-        onSuccess: (T) -> Unit,
-        onComplete: () -> Unit = onCompleteStub,
-        onError: (Throwable) -> Unit = onErrorStub
-    ) = subscribe(onSuccess, onError, onComplete).bind()
-
-    protected fun <T> Single<T>.bindSubscriptionAsync(
-        onSuccess: (T) -> Unit,
-        onError: (Throwable) -> Unit = onErrorStub,
-        onSubscribe: (Disposable) -> Unit = onSubscribeStub,
-        subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main(),
-        unsubscribeOn: Scheduler = schedulers.io()
-    ) = subscribeOn(subscribeOn)
-        .observeOn(observeOn)
-        .unsubscribeOn(unsubscribeOn)
         .doOnSubscribe(onSubscribe)
         .subscribe(onSuccess, onError)
         .bind()
@@ -74,38 +33,33 @@ package ru.ramozjikevic.mymap.ui.component.base.viewmodel
         onError: (Throwable) -> Unit = onErrorStub,
         onSubscribe: (Disposable) -> Unit = onSubscribeStub,
         subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main(),
-        unsubscribeOn: Scheduler = schedulers.io()
+        observeOn: Scheduler = schedulers.main()
     ) = subscribeOn(subscribeOn)
         .observeOn(observeOn)
-        .unsubscribeOn(unsubscribeOn)
         .doOnSubscribe(onSubscribe)
-        .subscribe(onComplete, onError).bind()
+        .subscribe(onComplete, onError)
+        .bind()
 
-*//**//*    protected fun <T> Observable<T>.bindSubscriptionAsync(
+    protected fun <T> Observable<T>.bindSubscriptionAsync(
         onNext: (T) -> Unit,
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub,
         onSubscribe: (Disposable) -> Unit = onSubscribeStub,
         subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main(),
-        unsubscribeOn: Scheduler = schedulers.io()
+        observeOn: Scheduler = schedulers.main()
     ) = subscribeOn(subscribeOn)
         .observeOn(observeOn)
-        .unsubscribeOn(unsubscribeOn)
         .subscribe(onNext, onError, onComplete, onSubscribe)
-        .bind()*//**//*
+        .bind()
 
     protected fun <T> Flowable<T>.bindSubscriptionAsync(
         onNext: (T) -> Unit,
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub,
         subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main(),
-        unsubscribeOn: Scheduler = schedulers.io()
+        observeOn: Scheduler = schedulers.main()
     ) = subscribeOn(subscribeOn)
         .observeOn(observeOn)
-        .unsubscribeOn(unsubscribeOn)
         .subscribe(onNext, onError, onComplete)
         .bind()
 
@@ -114,14 +68,11 @@ package ru.ramozjikevic.mymap.ui.component.base.viewmodel
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub,
         subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main(),
-        unsubscribeOn: Scheduler = schedulers.io()
+        observeOn: Scheduler = schedulers.main()
     ) = subscribeOn(subscribeOn)
         .observeOn(observeOn)
-        .unsubscribeOn(unsubscribeOn)
         .subscribe(onSuccess, onError, onComplete)
-        .bind()*//*
-
+        .bind()
 
     private fun Disposable.bind() = disposes.add(this)
 
@@ -129,6 +80,6 @@ package ru.ramozjikevic.mymap.ui.component.base.viewmodel
         super.onCleared()
         disposes.dispose()
     }
-}*/
+}
 
 

@@ -33,6 +33,6 @@ class FirstFragment : BaseFragment() {
             viewModelFactory
         }
 
-        rootViewModel.loadMoreTestData()
+        rootViewModel.addNewTestEntity()
     }
 }

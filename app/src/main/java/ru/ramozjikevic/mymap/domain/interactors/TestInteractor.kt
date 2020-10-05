@@ -11,6 +11,6 @@ import javax.inject.Singleton
 class TestInteractor @Inject constructor(
     private val testRepository: TestRepository
 ) {
-    fun loadNewData(data: List<TestEntity>) = testRepository.saveTestData(data)
+    fun putTestData(data: List<TestEntity>) = testRepository.saveTestData(data)
     fun getTestData() = testRepository.loadTestData()
 }
