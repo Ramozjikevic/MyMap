@@ -5,9 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import dagger.android.support.AndroidSupportInjection
+import ru.ramozjikevic.mymap.di.module.viewmodel.ViewModelFactory
+import ru.ramozjikevic.mymap.ui.component.base.viewmodel.BaseRxViewModel
+import ru.ramozjikevic.mymap.ui.component.base.viewmodel.IViewModelState
+import javax.inject.Inject
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<T : BaseRxViewModel<out IViewModelState>> : Fragment() {
     protected abstract val layout: Int
+    protected abstract val viewModel: T
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,4 +25,11 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = inflater.inflate(layout, container, false)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidSupportInjection.inject(this)
+        super.onCreate(savedInstanceState)
+    }
 }
+
+inline fun <reified T : BaseRxViewModel<out IViewModelState>> BaseFragment<T>.viewModels(
+) = viewModels<T> { viewModelFactory }
