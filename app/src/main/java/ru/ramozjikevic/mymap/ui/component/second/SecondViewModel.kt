@@ -1,11 +1,13 @@
 package ru.ramozjikevic.mymap.ui.component.second
 
 import android.util.Log
+import ru.ramozjikevic.mymap.data.remote.models.CharactersRes
 import ru.ramozjikevic.mymap.di.module.rx.SchedulersProvider
 import ru.ramozjikevic.mymap.domain.interactors.TestInteractor
 import ru.ramozjikevic.mymap.ui.component.base.viewmodel.BaseRxViewModel
 import ru.ramozjikevic.mymap.ui.component.base.viewmodel.IViewModelState
 import javax.inject.Inject
+import kotlin.math.log
 
 class SecondViewModel @Inject constructor(
     override val schedulers: SchedulersProvider,
@@ -19,16 +21,17 @@ class SecondViewModel @Inject constructor(
     fun loadTestData() {
         testInteractor.getCharacters()
             .bindSubscription(
-                onSuccess = {
-                    Log.e("123111", "${Thread.currentThread()}")
+                onSuccess = { list ->
+                    Log.e("123123", "$list")
+                    updateStateAsync { it.copy(character = list) }
                 },
                 onError = {
-                    Log.e("123123 err", "${Thread.currentThread()}")
+                    Log.e("123123", "error")
                 }
             )
     }
 }
 
 data class SecondState(
-    val isBoolean: Boolean = false
+    val character: List<CharactersRes> = listOf()
 ) : IViewModelState

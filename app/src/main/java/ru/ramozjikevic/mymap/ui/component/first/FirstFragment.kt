@@ -6,10 +6,9 @@ import androidx.navigation.fragment.findNavController
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_first.*
 import ru.ramozjikevic.mymap.R
-import ru.ramozjikevic.mymap.di.module.viewmodel.ViewModelFactory
 import ru.ramozjikevic.mymap.ui.component.base.BaseFragment
 import ru.ramozjikevic.mymap.ui.component.base.viewModels
-import javax.inject.Inject
+
 
 class FirstFragment : BaseFragment<FirstViewModel>() {
     override val layout: Int = R.layout.fragment_first

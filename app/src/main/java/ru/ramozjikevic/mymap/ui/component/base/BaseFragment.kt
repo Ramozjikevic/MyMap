@@ -15,6 +15,7 @@ import javax.inject.Inject
 abstract class BaseFragment<T : BaseRxViewModel<out IViewModelState>> : Fragment() {
     protected abstract val layout: Int
     protected abstract val viewModel: T
+    open val binding : Binding? = null
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -28,6 +29,13 @@ abstract class BaseFragment<T : BaseRxViewModel<out IViewModelState>> : Fragment
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.observeState(viewLifecycleOwner) {
+            binding?.bind(it)
+        }
     }
 }
 
