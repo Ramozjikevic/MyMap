@@ -9,8 +9,8 @@ import ru.ramozjikevic.mymap.ui.component.base.viewmodel.RxViewModel
 import javax.inject.Inject
 
 class FirstViewModel @Inject constructor(
-    override val schedulers: SchedulersProvider,
-    private val testInteractor: TestInteractor
+override val schedulers: SchedulersProvider,
+private val testInteractor: TestInteractor
 ) : BaseRxViewModel<FistState>(FistState()) {
 
     init {
