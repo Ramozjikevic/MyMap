@@ -1,7 +1,7 @@
 package ru.ramozjikevic.mymap.data.repository
 
-import ru.ramozjikevic.mymap.data.local.TestDao
-import ru.ramozjikevic.mymap.data.local.TestEntity
+import ru.ramozjikevic.mymap.data.local.dao.TestDao
+import ru.ramozjikevic.mymap.data.local.models.TestEntity
 import javax.inject.Inject
 
 class TestRepositoryImpl @Inject constructor(

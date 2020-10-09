@@ -5,7 +5,7 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import ru.ramozjikevic.mymap.data.local.DataBase
-import ru.ramozjikevic.mymap.data.local.TestDao
+import ru.ramozjikevic.mymap.data.local.dao.TestDao
 import javax.inject.Singleton
 
 @Module

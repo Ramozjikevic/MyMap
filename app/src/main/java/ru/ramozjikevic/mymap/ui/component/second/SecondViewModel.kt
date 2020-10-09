@@ -1,13 +1,11 @@
 package ru.ramozjikevic.mymap.ui.component.second
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
-import ru.ramozjikevic.mymap.data.local.TestEntity
+import ru.ramozjikevic.mymap.data.local.models.TestEntity
 import ru.ramozjikevic.mymap.di.module.rx.SchedulersProvider
 import ru.ramozjikevic.mymap.domain.interactors.TestInteractor
 import ru.ramozjikevic.mymap.ui.component.base.viewmodel.RxViewModel
 import javax.inject.Inject
-import kotlin.math.log
 
 class SecondViewModel @Inject constructor(
     override val schedulers: SchedulersProvider,
@@ -19,15 +17,12 @@ class SecondViewModel @Inject constructor(
     }
 
     fun loadTestData() {
-        testInteractor.putTestData(
-            listOf(
-                TestEntity(1, "Тест 1", "Контент 1")
-            )
-        ).flatMap {
-            testInteractor.getTestData()
-        }
+        testInteractor.getCharacters()
             .bindSubscriptionAsync(
                 onSuccess = {
+                    Log.e("123123", "$it")
+                },
+                onError = {
                     Log.e("123123", "$it")
                 }
             )

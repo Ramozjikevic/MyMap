@@ -8,6 +8,7 @@ import ru.ramozjikevic.mymap.App
 import ru.ramozjikevic.mymap.di.module.ActivityModule
 import ru.ramozjikevic.mymap.di.module.DataBaseModule
 import ru.ramozjikevic.mymap.di.module.RepositoryModule
+import ru.ramozjikevic.mymap.di.module.NetworkModule
 import ru.ramozjikevic.mymap.di.module.rx.RxModule
 import ru.ramozjikevic.mymap.di.module.viewmodel.ViewModelModule
 import javax.inject.Singleton
@@ -20,7 +21,8 @@ import javax.inject.Singleton
         ViewModelModule::class,
         ActivityModule::class,
         RxModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        NetworkModule::class
     ]
 )
 @Singleton

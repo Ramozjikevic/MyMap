@@ -2,7 +2,7 @@ package ru.ramozjikevic.mymap.ui.component.base.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 
-interface IViewModelState {
+interface BaseViewModelState {
     fun save(outState: SavedStateHandle) {}
-    fun restore(outState: SavedStateHandle) : IViewModelState
+    fun restore(outState: SavedStateHandle) : BaseViewModelState
 }

@@ -1,4 +1,4 @@
-package ru.ramozjikevic.mymap.data.local
+package ru.ramozjikevic.mymap.data.local.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
