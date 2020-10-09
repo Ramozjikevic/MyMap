@@ -1,5 +1,6 @@
 package ru.ramozjikevic.mymap.ui.component.base.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import io.reactivex.*
 import io.reactivex.disposables.CompositeDisposable
@@ -16,61 +17,51 @@ abstract class RxViewModel : ViewModel() {
     private val onErrorStub: (Throwable) -> Unit = {}
     private val onSubscribeStub: (Disposable) -> Unit = {}
 
-    protected fun <T> Single<T>.bindSubscriptionAsync(
+    protected fun <T> Single<T>.bindSubscription(
         onSuccess: (T) -> Unit,
         onError: (Throwable) -> Unit = onErrorStub,
         onSubscribe: (Disposable) -> Unit = onSubscribeStub,
-        subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main()
+        subscribeOn: Scheduler = schedulers.io()
     ) = subscribeOn(subscribeOn)
-        .observeOn(observeOn)
         .doOnSubscribe(onSubscribe)
         .subscribe(onSuccess, onError)
         .bind()
 
-    protected fun Completable.bindSubscriptionAsync(
+    protected fun Completable.bindSubscription(
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub,
         onSubscribe: (Disposable) -> Unit = onSubscribeStub,
-        subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main()
+        subscribeOn: Scheduler = schedulers.io()
     ) = subscribeOn(subscribeOn)
-        .observeOn(observeOn)
         .doOnSubscribe(onSubscribe)
         .subscribe(onComplete, onError)
         .bind()
 
-    protected fun <T> Observable<T>.bindSubscriptionAsync(
+    protected fun <T> Observable<T>.bindSubscription(
         onNext: (T) -> Unit,
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub,
         onSubscribe: (Disposable) -> Unit = onSubscribeStub,
-        subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main()
+        subscribeOn: Scheduler = schedulers.io()
     ) = subscribeOn(subscribeOn)
-        .observeOn(observeOn)
         .subscribe(onNext, onError, onComplete, onSubscribe)
         .bind()
 
-    protected fun <T> Flowable<T>.bindSubscriptionAsync(
+    protected fun <T> Flowable<T>.bindSubscription(
         onNext: (T) -> Unit,
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub,
-        subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main()
+        subscribeOn: Scheduler = schedulers.io()
     ) = subscribeOn(subscribeOn)
-        .observeOn(observeOn)
         .subscribe(onNext, onError, onComplete)
         .bind()
 
-    protected fun <T> Maybe<T>.bindSubscriptionAsync(
+    protected fun <T> Maybe<T>.bindSubscription(
         onSuccess: (T) -> Unit,
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub,
-        subscribeOn: Scheduler = schedulers.io(),
-        observeOn: Scheduler = schedulers.main()
+        subscribeOn: Scheduler = schedulers.io()
     ) = subscribeOn(subscribeOn)
-        .observeOn(observeOn)
         .subscribe(onSuccess, onError, onComplete)
         .bind()
 
