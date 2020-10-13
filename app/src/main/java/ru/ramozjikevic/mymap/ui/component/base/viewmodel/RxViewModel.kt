@@ -2,6 +2,7 @@ package ru.ramozjikevic.mymap.ui.component.base.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.paging.PageKeyedDataSource
 import io.reactivex.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -11,7 +12,7 @@ abstract class RxViewModel : ViewModel() {
 
     protected abstract val schedulers: SchedulersProvider
 
-    private val disposes = CompositeDisposable()
+    val disposes = CompositeDisposable()
 
     private val onCompleteStub: () -> Unit = {}
     private val onErrorStub: (Throwable) -> Unit = {}

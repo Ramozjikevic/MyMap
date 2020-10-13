@@ -15,5 +15,5 @@ class TestInteractor @Inject constructor(
 ) {
     fun putTestData(data: List<TestEntity>) = testRepository.saveTestData(data)
     fun getTestData() = testRepository.loadTestData()
-    fun getCharacters() = restService.getCharacters()
+    fun getCharacters(page: Long, pageSize: Int) = restService.getCharacters(page, pageSize)
 }

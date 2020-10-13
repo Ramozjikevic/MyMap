@@ -5,7 +5,6 @@ import ru.ramozjikevic.mymap.di.module.rx.SchedulersProvider
 import ru.ramozjikevic.mymap.domain.interactors.TestInteractor
 import ru.ramozjikevic.mymap.ui.component.base.viewmodel.BaseRxViewModel
 import ru.ramozjikevic.mymap.ui.component.base.viewmodel.IViewModelState
-import ru.ramozjikevic.mymap.ui.component.base.viewmodel.RxViewModel
 import javax.inject.Inject
 
 class FirstViewModel @Inject constructor(
